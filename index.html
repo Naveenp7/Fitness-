@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,18 @@
         <div class="logo-container">
             <h1>FitFlex</h1>
         </div>
-        <div id="current-date"></div>
+        <div class="header-right">
+            <div id="theme-switch-container">
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </span>
+                </label>
+            </div>
+            <div id="current-date"></div>
+        </div>
     </header>
 
     <div class="app-intro" id="app-intro">
@@ -24,6 +35,10 @@
     </div>
 
     <div class="program-selector" id="program-selector">
+        <div class="mobile-back-button" id="back-to-intro">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </div>
         <h2>Choose Your Program</h2>
         <div class="programs-grid">
             <div class="program-card" data-program="weight-loss">
@@ -62,6 +77,10 @@
                 <li class="nav-item" data-tab="habits-tab">
                     <i class="fas fa-check-circle"></i>
                     <span>Habits</span>
+                </li>
+                <li class="nav-item" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Restart</span>
                 </li>
             </ul>
         </nav>
