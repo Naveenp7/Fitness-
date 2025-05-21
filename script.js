@@ -730,6 +730,9 @@ function initProgramSelection() {
         startButton.addEventListener('click', function() {
             appIntro.style.display = 'none';
             programSelector.style.display = 'block';
+            
+            // Scroll to top of program selector for better mobile experience
+            window.scrollTo(0, 0);
         });
     }
     
@@ -742,6 +745,9 @@ function initProgramSelection() {
             // Hide program selector and show main app
             programSelector.style.display = 'none';
             appContainer.style.display = 'block';
+            
+            // Scroll to top for better mobile experience
+            window.scrollTo(0, 0);
         });
     });
 }
@@ -822,6 +828,58 @@ function setupHabits() {
     }
 }
 
+// Setup theme toggle
+function setupThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    // Check for saved theme preference or respect OS preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.checked = true;
+    }
+    
+    // Toggle theme when checkbox is clicked
+    themeToggle.addEventListener('change', function() {
+        if (this.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
+
+// Setup proper navigation flows for mobile
+function setupNavigationFlows() {
+    // Set up back button in program selector
+    const backToIntro = document.getElementById('back-to-intro');
+    if (backToIntro) {
+        backToIntro.addEventListener('click', function() {
+            document.getElementById('program-selector').style.display = 'none';
+            document.getElementById('app-intro').style.display = 'flex';
+        });
+    }
+    
+    // Set up logout/restart button
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            // Reset the app state
+            currentProgram = null;
+            currentWeek = 0;
+            currentDayPlan = {};
+            
+            // Hide app container and show intro
+            document.getElementById('app-container').style.display = 'none';
+            document.getElementById('app-intro').style.display = 'flex';
+        });
+    }
+}
+
 // Initialize app
 function init() {
     displayCurrentDate();
@@ -841,6 +899,8 @@ function init() {
     setupTabs();
     setupMealPlan();
     setupHabits();
+    setupThemeToggle();
+    setupNavigationFlows();
     
     // Check if app should start at intro or show content directly (for demo)
     const queryParams = new URLSearchParams(window.location.search);
