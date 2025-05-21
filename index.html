@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlex - Your Personal Fitness Journey</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1>FitFlex</h1>
+        </div>
+        <div id="current-date"></div>
+    </header>
+
+    <div class="app-intro" id="app-intro">
+        <div class="intro-content">
+            <h2>Your Personal Fitness Journey Begins Here</h2>
+            <p>FitFlex makes regular workouts accessible, effective, and joyful</p>
+            <button id="get-started-btn" class="cta-button">Choose a Program</button>
+        </div>
+    </div>
+
+    <div class="program-selector" id="program-selector">
+        <h2>Choose Your Program</h2>
+        <div class="programs-grid">
+            <div class="program-card" data-program="weight-loss">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Weight Loss">
+                <h3>Weight Loss</h3>
+                <p>Burn fat and improve cardio fitness</p>
+            </div>
+            <div class="program-card" data-program="muscle-gain">
+                <img src="https://images.unsplash.com/photo-1532384748853-8f54a8f476e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Muscle Gain">
+                <h3>Muscle Gain</h3>
+                <p>Build strength and increase muscle mass</p>
+            </div>
+            <div class="program-card" data-program="overall-fitness">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Overall Fitness">
+                <h3>Overall Fitness</h3>
+                <p>Improve general health and wellness</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container" id="app-container">
+        <nav class="main-nav">
+            <ul>
+                <li class="nav-item active" data-tab="workout-tab">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>Workouts</span>
+                </li>
+                <li class="nav-item" data-tab="meal-tab">
+                    <i class="fas fa-utensils"></i>
+                    <span>Meal Plan</span>
+                </li>
+                <li class="nav-item" data-tab="progress-tab">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Progress</span>
+                </li>
+                <li class="nav-item" data-tab="habits-tab">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Habits</span>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="tab-content active" id="workout-tab">
+            <div class="dashboard-header">
+                <h2>Your Workout Plan</h2>
+                <div class="progress-summary">
+                    <div class="progress-stat">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Workouts to see results</span>
+                    </div>
+                    <div class="progress-stat">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Completed</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="week-selection">
+                <div class="week-selector-container">
+                    <label for="week-selector">Select Week:</label>
+                    <select id="week-selector" class="week-selector">
+                        <!-- Week options will be generated dynamically -->
+                    </select>
+                </div>
+                <p id="week-description" class="week-description">
+                    <!-- Week description will be populated dynamically -->
+                </p>
+                <div class="focus-areas-container">
+                    <h3>Focus Areas This Week:</h3>
+                    <div id="focus-areas" class="focus-areas">
+                        <!-- Focus area badges will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabs-container" id="day-tabs">
+                <!-- Day tabs will be dynamically inserted here -->
+            </div>
+
+            <h2 id="selected-day" class="day-heading"></h2>
+            <div class="workouts-container" id="workouts-container">
+                <!-- Workout cards will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <div class="tab-content" id="meal-tab">
+            <div class="dashboard-header">
+                <h2>Your Meal Plan</h2>
+                <p>Personalized meals based on your fitness goals</p>
+            </div>
+
+            <div class="meal-plan-container">
+                <div class="meal-day-selector">
+                    <button class="meal-day active">Today</button>
+                    <button class="meal-day">Tomorrow</button>
+                    <button class="meal-day">Weekly Plan</button>
+                </div>
+
+                <div class="meals-container">
+                    <div class="meal-card">
+                        <div class="meal-header">
+                            <h3>Breakfast</h3>
+                            <span class="meal-time">8:00 AM</span>
+                        </div>
+                        <div class="meal-image">
+                            <img src="https://images.unsplash.com/photo-1494390248081-4e521a5940db?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Breakfast">
+                        </div>
+                        <div class="meal-details">
+                            <h4>Greek Yogurt Parfait</h4>
+                            <div class="meal-macros">
+                                <span class="macro"><i class="fas fa-fire"></i> 320 cal</span>
+                                <span class="macro"><i class="fas fa-drumstick-bite"></i> 20g protein</span>
+                                <span class="macro"><i class="fas fa-bread-slice"></i> 40g carbs</span>
+                                <span class="macro"><i class="fas fa-oil-can"></i> 10g fat</span>
+                            </div>
+                            <button class="view-recipe-btn">View Recipe</button>
+                        </div>
+                    </div>
+
+                    <div class="meal-card">
+                        <div class="meal-header">
+                            <h3>Lunch</h3>
+                            <span class="meal-time">12:30 PM</span>
+                        </div>
+                        <div class="meal-image">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lunch">
+                        </div>
+                        <div class="meal-details">
+                            <h4>Chicken Quinoa Bowl</h4>
+                            <div class="meal-macros">
+                                <span class="macro"><i class="fas fa-fire"></i> 450 cal</span>
+                                <span class="macro"><i class="fas fa-drumstick-bite"></i> 35g protein</span>
+                                <span class="macro"><i class="fas fa-bread-slice"></i> 50g carbs</span>
+                                <span class="macro"><i class="fas fa-oil-can"></i> 12g fat</span>
+                            </div>
+                            <button class="view-recipe-btn">View Recipe</button>
+                        </div>
+                    </div>
+
+                    <div class="meal-card">
+                        <div class="meal-header">
+                            <h3>Dinner</h3>
+                            <span class="meal-time">7:00 PM</span>
+                        </div>
+                        <div class="meal-image">
+                            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dinner">
+                        </div>
+                        <div class="meal-details">
+                            <h4>Salmon with Roasted Vegetables</h4>
+                            <div class="meal-macros">
+                                <span class="macro"><i class="fas fa-fire"></i> 520 cal</span>
+                                <span class="macro"><i class="fas fa-drumstick-bite"></i> 40g protein</span>
+                                <span class="macro"><i class="fas fa-bread-slice"></i> 30g carbs</span>
+                                <span class="macro"><i class="fas fa-oil-can"></i> 25g fat</span>
+                            </div>
+                            <button class="view-recipe-btn">View Recipe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grocery-list-container">
+                    <h3>Weekly Grocery List</h3>
+                    <button class="grocery-list-btn">Generate Grocery List</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="progress-tab">
+            <div class="dashboard-header">
+                <h2>Your Progress</h2>
+                <p>Track your fitness journey</p>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-chart">
+                    <h3>Weight Tracking</h3>
+                    <div class="chart-placeholder">
+                        <div class="weight-chart">
+                            <div class="weight-point" style="--height: 80%"></div>
+                            <div class="weight-point" style="--height: 75%"></div>
+                            <div class="weight-point" style="--height: 72%"></div>
+                            <div class="weight-point active" style="--height: 68%"></div>
+                        </div>
+                        <div class="chart-labels">
+                            <span>Start: 88kg</span>
+                            <span>Current: 84kg</span>
+                            <span>Goal: 75kg</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3>Workouts Completed</h3>
+                        <div class="stat-value">12</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Minutes</h3>
+                        <div class="stat-value">360</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Calories Burned</h3>
+                        <div class="stat-value">4,800</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="habits-tab">
+            <div class="dashboard-header">
+                <h2>Habit Building</h2>
+                <p>Develop healthy habits and fortitude</p>
+            </div>
+
+            <div class="habits-container">
+                <div class="habit-card">
+                    <div class="habit-icon">
+                        <i class="fas fa-glass-water"></i>
+                    </div>
+                    <div class="habit-details">
+                        <h3>Drink Water</h3>
+                        <p>Goal: 8 glasses per day</p>
+                        <div class="habit-progress">
+                            <div class="progress-bar" style="--progress: 75%"></div>
+                            <span>6/8 glasses</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="habit-card">
+                    <div class="habit-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="habit-details">
+                        <h3>Sleep Well</h3>
+                        <p>Goal: 8 hours per night</p>
+                        <div class="habit-progress">
+                            <div class="progress-bar" style="--progress: 88%"></div>
+                            <span>7/8 hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="habit-card">
+                    <div class="habit-icon">
+                        <i class="fas fa-meditation"></i>
+                    </div>
+                    <div class="habit-details">
+                        <h3>Meditate</h3>
+                        <p>Goal: 10 minutes per day</p>
+                        <div class="habit-progress">
+                            <div class="progress-bar" style="--progress: 50%"></div>
+                            <span>5/10 minutes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="habit-card add-habit">
+                    <div class="add-habit-button">
+                        <i class="fas fa-plus"></i>
+                        <span>Add New Habit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="app-info">
+                <h3>FitFlex</h3>
+                <p>Making fitness accessible, effective and joyful</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Support</a>
+                <a href="#">About Us</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 FitFlex. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
